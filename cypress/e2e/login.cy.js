@@ -12,7 +12,7 @@ describe('Login no hub de leitura', () => {
     cy.get('h4').should('contain', 'Olá')
   })
 
-  it.only('Deve fazer login com sucesso com usuário admin - usando comando customizado', () => {
+  it('Deve fazer login com sucesso com usuário admin - usando comando customizado', () => {
     cy.login(Cypress.env('ADMIN_EMAIL'), Cypress.env('ADMIN_SENHA'))
     cy.get('h1').should('contain', 'Painel Administrativo')
   })
@@ -50,5 +50,6 @@ describe('Login no hub de leitura', () => {
     cy.wait('@erroClient')
     cy.get('#alert-container').should('contain', 'Erro ao fazer login')
   });
+
 
 })

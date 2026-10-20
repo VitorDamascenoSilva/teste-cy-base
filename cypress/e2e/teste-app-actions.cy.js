@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import appActions from '../support/appActions'
+
 describe('Login no hub de leitura', () => {
 
     beforeEach(() => {
@@ -85,6 +87,14 @@ describe('Login no hub de leitura', () => {
         cy.wait('@erroClient')
         cy.get('#alert-container').should('contain', 'Erro ao fazer login')
     });
+
+    it('Deve fazer login com sucesso usando AppActions', () => {
+    appActions.login('usuario@teste.com', 'user123')
+
+    cy.url().should('include', 'dashboard')
+    cy.get('h4').should('contain', 'Olá')
+})
+
 
     const reservas = {
         "reservations": [
